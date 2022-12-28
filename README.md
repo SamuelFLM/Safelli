@@ -11,5 +11,7 @@
 
  Nesse primeiro dia pensei na Interface e na estrutura do projeto.
 
-Interface
-<img src="img/interface.png" alt="interface">
+Desenho da interface
+<img src="img/Interface.png" alt="interface">
+
+
