@@ -9,8 +9,7 @@
 
 ### Progresso
 
- Aqui irei listar um pouco do conhecimento que estou adquirindo:
+ Nesse primeiro dia pensei na Interface e na estrutura do projeto.
 
-Ate o momento....
- 
-
+Interface
+<img src="img/interface.png" alt="interface">
