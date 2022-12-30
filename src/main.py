@@ -8,12 +8,23 @@ while True:  # Event Loop
     if event == sg.WIN_CLOSED or event == 'EXIT':
         break
     
+    # Abaixo do log position
     if event == 'play':
         print("play mermao")
+    if event == 'clear':
+        print("clear mermao")
     if event == 'new':
         print("new mermao")
         
-    # Mouse position
+    # Janela Instrucoes
+    if event == 'add':
+        print("add mermao")
+    if event == 'remove':
+        print("remove mermao")
+    if event == 'help':
+        print("help mermao")
+        
+    # Janela Mouse position
     if event == "play_position":
         if values["minimizar"]:
             window.minimize()
