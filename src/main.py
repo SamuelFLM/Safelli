@@ -1,7 +1,11 @@
 from Interface.home import * 
+from Interface.Page_Clicar import *
 import PySimpleGUI as sg
 import pyautogui as bot
+algoritmo = []
 lista_log = []
+linhas = 0
+# window = page_clicar()
 window = home()
 while True:  # Event Loop
     event, values = window.read()
@@ -18,7 +22,21 @@ while True:  # Event Loop
         
     # Janela Instrucoes
     if event == 'add':
-        print("add mermao")
+        match(values["--OPCAO--"]):
+            case "Clicar":
+                window.close()
+                window = page_clicar()
+                while True:
+                    event, values = window.read()    
+                    if event == "okClique":
+                        valorBotao = values["valorBotao"]
+                        qtd_cliques = values["qtd_cliques"]
+                        linhas += 1
+                        algoritmo.append(f'{linhas} - Clique: Botao({valorBotao}) Qtd({qtd_cliques})')
+                        window.close()
+                        break
+                window = home()
+                window['algoritmo'].update(algoritmo)
     if event == 'remove':
         print("remove mermao")
     if event == 'help':
