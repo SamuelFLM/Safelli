@@ -1,5 +1,6 @@
 from Interface.home import * 
 from Interface.Page_Clicar import *
+from Interface.Page_Mouse import *
 import PySimpleGUI as sg
 import pyautogui as bot
 algoritmo = []
@@ -23,6 +24,22 @@ while True:  # Event Loop
     # Janela Instrucoes
     if event == 'add':
         match(values["--OPCAO--"]):
+            case "Mover Mouse":
+                window.close()
+                window = page_mouse()
+                while True:
+                    event, values = window.read()    
+                    if event == "okClique":
+                        valorX = values["valorX"]
+                        valorY = values["valorY"]
+                        linhas += 1
+                        algoritmo.append(f'{linhas} - Mover(X:{valorX} Y:{valorY})')
+                        window.close()
+                        break
+                window = home()
+                window['algoritmo'].update(algoritmo)
+            case "Esperar":
+                pass
             case "Clicar":
                 window.close()
                 window = page_clicar()
@@ -37,18 +54,31 @@ while True:  # Event Loop
                         break
                 window = home()
                 window['algoritmo'].update(algoritmo)
+            case "Apertar Tecla(S)":
+                pass
+            case "Escrever":
+                pass
+            case "Scroll":
+                pass
+            case default:
+                bot.confirm(title="ALERT",text="SELECIONE UMA INSTRUCAO!", buttons=["OK"])
+            
     if event == 'remove':
-        print("remove mermao")
+        algoritmo.pop()
+        window['algoritmo'].update(algoritmo)
     if event == 'help':
         print("help mermao")
         
-    # Janela Mouse position
-    if event == "play_position":
-        if values["minimizar"]:
-            window.minimize()
-        bot.sleep(values["--TIME--"])
-        lista_log.append(f'{values["nome_position"]}:{bot.position()}')
-        window['log'].update(lista_log)
+    # Janela Mouse position - OK
+    if event == "add_position":
+        if (values["--TIME--"] >= 0 and values["nome_position"] != ""):
+            if values["minimizar"]:
+                window.minimize()
+            bot.sleep(values["--TIME--"])
+            lista_log.append(f'{values["nome_position"]}:{bot.position()}')
+            window['log'].update(lista_log)
+        else:
+            bot.confirm(title="alert", text="ERRO: TEMPO E NOME SEM PREENCHIMENTO.", buttons=["OK"])
     if event == "remove_position":
         try:
             lista_log.pop()
