@@ -1,6 +1,7 @@
 from Interface.home import * 
 from Interface.Page_Clicar import *
 from Interface.Page_Mouse import *
+from Interface.Page_Esperar import *
 import PySimpleGUI as sg
 import pyautogui as bot
 algoritmo = []
@@ -39,7 +40,18 @@ while True:  # Event Loop
                 window = home()
                 window['algoritmo'].update(algoritmo)
             case "Esperar":
-                pass
+                window.close()
+                window = page_esperar()
+                while True:
+                    event, values = window.read()    
+                    if event == "okClique":
+                        valorTime = values["valorTime"]
+                        linhas += 1
+                        algoritmo.append(f'{linhas} - Esperar({valorTime})')
+                        window.close()
+                        break
+                window = home()
+                window['algoritmo'].update(algoritmo)
             case "Clicar":
                 window.close()
                 window = page_clicar()
