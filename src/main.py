@@ -2,6 +2,7 @@ from Interface.home import *
 from Interface.Page_Clicar import *
 from Interface.Page_Mouse import *
 from Interface.Page_Esperar import *
+from Interface.Page_Teclas import *
 import PySimpleGUI as sg
 import pyautogui as bot
 algoritmo = []
@@ -32,7 +33,7 @@ while True:  # Event Loop
                     event, values = window.read()    
                     if event == "okClique":
                         valorX = values["valorX"]
-                        valorY = values["valorY"]
+                        valorY = values["valorY"] 
                         linhas += 1
                         algoritmo.append(f'{linhas} - Mover(X:{valorX} Y:{valorY})')
                         window.close()
@@ -67,7 +68,19 @@ while True:  # Event Loop
                 window = home()
                 window['algoritmo'].update(algoritmo)
             case "Apertar Tecla(S)":
-                pass
+                window.close()
+                window = page_tecla()
+                while True:
+                    event, values = window.read()    
+                    if event == "okClique":
+                        tecla1 = values["tecla1"]
+                        tecla2 = values["tecla2"]
+                        linhas += 1
+                        algoritmo.append(f'{linhas} - Tecla(s)({tecla1} + {tecla2})')
+                        window.close()
+                        break
+                window = home()
+                window['algoritmo'].update(algoritmo)
             case "Escrever":
                 pass
             case "Scroll":
