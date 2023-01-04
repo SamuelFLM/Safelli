@@ -4,6 +4,7 @@ from Interface.Page_Mouse import *
 from Interface.Page_Esperar import *
 from Interface.Page_Teclas import *
 from Interface.Page_Escrever import *
+from Interface.Page_Scroll import *
 import PySimpleGUI as sg
 import pyautogui as bot
 algoritmo = []
@@ -106,7 +107,18 @@ while True:  # Event Loop
                 window = home()
                 window['algoritmo'].update(algoritmo)
             case "Scroll":
-                pass
+                window.close()
+                window = page_scroll()
+                while True:
+                    event, values = window.read()
+                    scroll = values["scroll"]
+                    if event == "okClique":
+                        linhas += 1
+                        algoritmo.append(f'{linhas} - Scroll({scroll})')
+                        window.close()
+                        break
+                window = home()
+                window['algoritmo'].update(algoritmo)
             case default:
                 bot.confirm(title="ALERT",text="SELECIONE UMA INSTRUCAO!", buttons=["OK"])
             
