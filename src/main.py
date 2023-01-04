@@ -3,6 +3,7 @@ from Interface.Page_Clicar import *
 from Interface.Page_Mouse import *
 from Interface.Page_Esperar import *
 from Interface.Page_Teclas import *
+from Interface.Page_Escrever import *
 import PySimpleGUI as sg
 import pyautogui as bot
 algoritmo = []
@@ -82,7 +83,28 @@ while True:  # Event Loop
                 window = home()
                 window['algoritmo'].update(algoritmo)
             case "Escrever":
-                pass
+                window.close()
+                window = page_escrever()
+                while True:
+                    event, values = window.read()
+                    escreva = ""
+                    if bool(values["checkLinha"]) == True:
+                        window["checkVariasLinhas"].update(disabled=True)
+                        window["linha1"].update(disabled=False)
+                        escreva = values["linha1"]
+                        
+                    # if values["checkVariasLinhas"] == True:
+                    #     window["checkLinha"].update(disabled=True)
+                    #     window["multilinha"].update(disabled=False)
+                    #     escreva = values["multilinha"]
+                           
+                    if event == "okClique":
+                        linhas += 1
+                        algoritmo.append(f'{linhas} - Escreva({escreva})')
+                        window.close()
+                        break
+                window = home()
+                window['algoritmo'].update(algoritmo)
             case "Scroll":
                 pass
             case default:
