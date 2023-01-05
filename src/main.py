@@ -5,6 +5,7 @@ from Interface.Page_Esperar import *
 from Interface.Page_Teclas import *
 from Interface.Page_Escrever import *
 from Interface.Page_Scroll import *
+from Interface.Page_NewProject import *
 import PySimpleGUI as sg
 import pyautogui as bot
 algoritmo = []
@@ -22,8 +23,16 @@ while True:  # Event Loop
         print("play mermao")
     if event == 'clear':
         print("clear mermao")
+        
     if event == 'new':
-        print("new mermao")
+        window.close()
+        window = page_new_project()
+        while True:
+            event, values = window.read()    
+            if event == "newproject" or event == "openproject":
+                window.close()
+                break
+        window = home()
         
     # Janela Instrucoes
     if event == 'add':
