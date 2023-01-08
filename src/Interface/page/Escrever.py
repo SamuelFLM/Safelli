@@ -5,7 +5,7 @@ def page_escrever():
     layout = [
         [sg.Checkbox("Uma Linha: ", pad=(20,(50,30)), key="checkLinha"), sg.Checkbox("Linhas", pad=(20,(50,30)), key="checkVariasLinhas")],
         [sg.Input("",pad=(20,(0,0)),s=(20,20),font="verdana 11 bold", disabled=True,key="linha1")],
-        [sg.Image(filename="img/add_button.png",
+        [sg.Image(filename="src/Interface/page/img/buttons/add_button.png",
                  size=(64, 64), pad=(150,(30,0)), enable_events=True, key='okClique',)]
     ]
 
