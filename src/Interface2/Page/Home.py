@@ -19,17 +19,18 @@ def page_inicial():
     window = sg.Window("a", layout=layout, finalize=True, grab_anywhere=True, size=(877,619), background_color=backgroud, font="verdana 11 bold")
     return window
 
+window = page_inicial()
 
-# while True:
-#     event, values = window.read()
+while True:
+    event, values = window.read()
     
-#     if event == sg.WIN_CLOSED:
-#         break
+    if event == sg.WIN_CLOSED:
+        break
     
-#     if event == "menu":
-#         window["menu"].update(filename="src/Interface2/Image/Icon/ON/menu.png")
-#         window["home"].update(visible=True)
-#         window["terminal"].update(visible=True)
-#         window["log"].update(visible=True)
-#         window["config"].update(visible=True)
-#         window["sair"].update(visible=True)
+    if event == "menu":
+        window["menu"].update(filename="src/Interface2/Image/Icon/ON/menu.png")
+        window["home"].update(visible=True)
+        window["terminal"].update(visible=True)
+        window["log"].update(visible=True)
+        window["config"].update(visible=True)
+        window["sair"].update(visible=True)

@@ -9,7 +9,7 @@
 
 ### Progresso
 
- Nesse primeiro dia pensei na Interface e na estrutura do projeto.
+ Nesse primeiro dia pensei na Interface e na estrutura do projeto..
 
 > Desenho da interface
 
